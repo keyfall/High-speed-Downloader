@@ -39,10 +39,11 @@ class MainWindow(QWidget):
     def startDownload(self):
         g.download_thread_num = int(self.ui.comboBox.currentText())
         g.download_url = self.ui.lineEdit_url.text()
+        g.download_file_name = self.ui.lineEdit_file_name.text()
         self.ui.progressBar.setValue(0)
         g.is_start = False
-        if g.download_url == '' or g.download_target_dir == '':
-            QMessageBox(QMessageBox.Warning, '警告', '网址和存储文件夹均不能为空！！').exec_()
+        if g.download_url == '' or g.download_target_dir == '' or g.download_target_dir == '':
+            QMessageBox(QMessageBox.Warning, '警告', '网址, 文件名和存储文件夹均不能为空！！').exec_()
             return
         self.ui.plainTextEdit_result.setPlainText('下载链接: \n{}\n'.format(g.download_url) + '\n正在解析该链接......')
         self.multi_download_thread.start()

@@ -76,7 +76,7 @@ class MultiThreadDownload(QThread):
         self.text_and_progress_signal.emit('正在解析链接......', 0.0)
         if not os.path.exists(g.download_target_dir):
             os.mkdir(g.download_target_dir)
-        file_path = g.download_target_dir + '/' + g.download_url.split('?')[0].split('/')[-1]
+        file_path = g.download_target_dir + '/' + g.download_file_name
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}
         header_infos = requests.head(g.download_url, headers=headers, timeout=20).headers
